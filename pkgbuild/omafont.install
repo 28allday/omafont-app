@@ -1,0 +1,8 @@
+caches() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor >/dev/null 2>&1 || true
+  update-desktop-database -q >/dev/null 2>&1 || true
+}
+
+post_install() { caches; }
+post_upgrade() { caches; }
+post_remove() { caches; }

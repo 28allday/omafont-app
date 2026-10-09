@@ -1,0 +1,22 @@
+/build/
+/build-tests/
+/pkg/
+/pkgbuild/pkg/
+/pkgbuild/src/
+*.pkg.tar.*
+*.src.tar.*
+*.o
+*.moc
+moc_*.cpp
+qrc_*.cpp
+.qmake.stash
+Makefile
+build-asan/
+*.zip
+__pycache__/
+
+# Development material stays local
+NOTES.local.md
+/tests/
+/tools/
+/bin/test

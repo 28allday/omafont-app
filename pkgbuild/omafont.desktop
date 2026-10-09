@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=OmaFont
+GenericName=Font Manager
+Comment=Browse, preview, install and remove fonts
+Exec=omafont %F
+Icon=omafont
+Terminal=false
+Categories=Utility;Graphics;Settings;
+Keywords=font;fonts;typeface;install;ttf;otf;omarchy;
+MimeType=font/ttf;font/otf;font/collection;font/sfnt;application/x-font-ttf;application/x-font-otf;application/vnd.ms-opentype;
+StartupWMClass=omafont

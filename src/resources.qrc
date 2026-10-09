@@ -1,0 +1,58 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>Theme.qml</file>
+        <file>Sheet.qml</file>
+        <file>SectionLabel.qml</file>
+        <file>FamilyRail.qml</file>
+        <file>Specimen.qml</file>
+        <file>Inspector.qml</file>
+        <file>HelpSheet.qml</file>
+        <file>Sidebar.qml</file>
+        <file>FamilyGrid.qml</file>
+        <file>FamilyList.qml</file>
+        <file>Repertoire.qml</file>
+        <file>SmartCollectionSheet.qml</file>
+        <file>ValidationSheet.qml</file>
+        <file>NameSheet.qml</file>
+        <file>TidySheet.qml</file>
+        <file>CompareView.qml</file>
+        <file alias="ui/Sheets.qml">Sheets.qml</file>
+        <file>ui/Icon.qml</file>
+        <file>ui/icons/Icons.qml</file>
+    </qresource>
+    <qresource prefix="/qt/qml/OmaFontStyle">
+        <file alias="qmldir">style/OmaFontStyle/qmldir</file>
+        <file alias="ApplicationWindow.qml">style/OmaFontStyle/ApplicationWindow.qml</file>
+        <file alias="Button.qml">style/OmaFontStyle/Button.qml</file>
+        <file alias="CheckBox.qml">style/OmaFontStyle/CheckBox.qml</file>
+        <file alias="ComboBox.qml">style/OmaFontStyle/ComboBox.qml</file>
+        <file alias="Dialog.qml">style/OmaFontStyle/Dialog.qml</file>
+        <file alias="DialogButtonBox.qml">style/OmaFontStyle/DialogButtonBox.qml</file>
+        <file alias="Frame.qml">style/OmaFontStyle/Frame.qml</file>
+        <file alias="ItemDelegate.qml">style/OmaFontStyle/ItemDelegate.qml</file>
+        <file alias="Label.qml">style/OmaFontStyle/Label.qml</file>
+        <file alias="Menu.qml">style/OmaFontStyle/Menu.qml</file>
+        <file alias="MenuBar.qml">style/OmaFontStyle/MenuBar.qml</file>
+        <file alias="MenuBarItem.qml">style/OmaFontStyle/MenuBarItem.qml</file>
+        <file alias="MenuItem.qml">style/OmaFontStyle/MenuItem.qml</file>
+        <file alias="MenuSeparator.qml">style/OmaFontStyle/MenuSeparator.qml</file>
+        <file alias="Pane.qml">style/OmaFontStyle/Pane.qml</file>
+        <file alias="Popup.qml">style/OmaFontStyle/Popup.qml</file>
+        <file alias="ProgressBar.qml">style/OmaFontStyle/ProgressBar.qml</file>
+        <file alias="RadioButton.qml">style/OmaFontStyle/RadioButton.qml</file>
+        <file alias="ScrollBar.qml">style/OmaFontStyle/ScrollBar.qml</file>
+        <file alias="ScrollIndicator.qml">style/OmaFontStyle/ScrollIndicator.qml</file>
+        <file alias="ScrollView.qml">style/OmaFontStyle/ScrollView.qml</file>
+        <file alias="Slider.qml">style/OmaFontStyle/Slider.qml</file>
+        <file alias="SpinBox.qml">style/OmaFontStyle/SpinBox.qml</file>
+        <file alias="Switch.qml">style/OmaFontStyle/Switch.qml</file>
+        <file alias="TabBar.qml">style/OmaFontStyle/TabBar.qml</file>
+        <file alias="TabButton.qml">style/OmaFontStyle/TabButton.qml</file>
+        <file alias="TextArea.qml">style/OmaFontStyle/TextArea.qml</file>
+        <file alias="TextField.qml">style/OmaFontStyle/TextField.qml</file>
+        <file alias="ToolButton.qml">style/OmaFontStyle/ToolButton.qml</file>
+        <file alias="ToolSeparator.qml">style/OmaFontStyle/ToolSeparator.qml</file>
+        <file alias="ToolTip.qml">style/OmaFontStyle/ToolTip.qml</file>
+    </qresource>
+</RCC>

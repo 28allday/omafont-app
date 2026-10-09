@@ -1,0 +1,30 @@
+# Maintainer: 28allday
+
+pkgname=omafont
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Font manager for Omarchy: browse, preview, install and remove fonts'
+arch=('x86_64' 'aarch64')
+url='https://github.com/28allday/omafont-app'
+license=('MIT')
+install='omafont.install'
+options=('!debug')
+depends=('hicolor-icon-theme' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'fontconfig' 'libarchive' 'xdg-desktop-portal')
+makedepends=('gcc' 'make' 'pkgconf')
+source=()
+sha256sums=()
+
+# Builds the working tree; ./bin/install runs it.
+build() {
+  cd "$startdir/.."
+  ./bin/build
+}
+
+package() {
+  cd "$startdir/.."
+  /usr/bin/install -Dm755 build/omafont "$pkgdir/usr/bin/omafont"
+  /usr/bin/install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  /usr/bin/install -Dm644 src/ui/icons/LICENSE.lucide "$pkgdir/usr/share/licenses/$pkgname/LICENSE.lucide"
+  /usr/bin/install -Dm644 "$startdir/omafont.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/omafont.svg"
+  /usr/bin/install -Dm644 "$startdir/omafont.desktop" "$pkgdir/usr/share/applications/omafont.desktop"
+}
