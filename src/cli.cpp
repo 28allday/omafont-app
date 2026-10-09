@@ -12,6 +12,10 @@
 #include <QTextStream>
 #include <QTimer>
 
+#ifndef OMAFONT_VERSION
+#define OMAFONT_VERSION "dev"
+#endif
+
 namespace {
 
 const QStringList kVerbs = {QStringLiteral("list"), QStringLiteral("info"), QStringLiteral("install"),
@@ -25,6 +29,7 @@ void usage() {
     out() << "OmaFont — fonts for Omarchy.\n\n"
              "  omafont                         open the window\n"
              "  omafont <file|folder|archive>…  open the window with those staged\n"
+             "  omafont --version               which version this is\n"
              "  omafont list [--all] [--json]   installed families (yours first)\n"
              "  omafont info <family> [--json]  styles and files of one family\n"
              "  omafont install <path>… [--json]  install fonts, folders or archives\n"
@@ -109,7 +114,8 @@ int fail(const QString &message, bool json) {
 }  // namespace
 
 bool Cli::isVerb(const QString &word) {
-    return kVerbs.contains(word) || word == QLatin1String("--help") || word == QLatin1String("-h");
+    return kVerbs.contains(word) || word == QLatin1String("--help") || word == QLatin1String("-h")
+        || word == QLatin1String("--version");
 }
 
 int Cli::run(Backend &backend, const QStringList &words) {
@@ -120,6 +126,11 @@ int Cli::run(Backend &backend, const QStringList &words) {
 
     if (verb == QLatin1String("help") || verb == QLatin1String("--help") || verb == QLatin1String("-h")) {
         usage();
+        return 0;
+    }
+    if (verb == QLatin1String("--version")) {
+        out() << "omafont " << OMAFONT_VERSION << '\n';
+        out().flush();
         return 0;
     }
 

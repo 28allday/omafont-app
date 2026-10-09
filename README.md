@@ -12,36 +12,54 @@ Oma creative suite.
 
 OmaFont is made for Omarchy.
 
-1. Open a terminal with **Super + Enter**.
-2. Copy and paste these three lines, then press Enter:
+Download the package from the [latest release](https://github.com/28allday/omafont-app/releases/latest),
+then open a terminal with **Super + Enter** and install it:
 
-   ```sh
-   git clone https://github.com/28allday/omafont-app.git ~/omafont-app
-   cd ~/omafont-app
-   ./bin/install
-   ```
+```sh
+sudo pacman -U ~/Downloads/omafont-0.1.0-1-x86_64.pkg.tar.zst
+```
 
-3. Type your password when asked.
-4. When it lists the packages it needs and asks to proceed, press Enter.
+Or download and install it from the terminal in one go:
 
-OmaFont is built on your computer, which takes a minute or two. When it
-finishes, open it from the app launcher: press **Super + Space** and type
-**OmaFont**. Font files also open in it from your file manager.
+```sh
+curl -LO https://github.com/28allday/omafont-app/releases/download/v0.1.0/omafont-0.1.0-1-x86_64.pkg.tar.zst
+sudo pacman -U ./omafont-0.1.0-1-x86_64.pkg.tar.zst
+```
 
-If the install stops with *"OmaFont is built with makepkg"*, install the build
-tools first and run `./bin/install` again:
+Type your password when asked, and press Enter to confirm. Then open OmaFont
+from the app launcher: press **Super + Space** and type **OmaFont**. Font
+files also open in it from your file manager.
+
+(The package is unsigned, so pacman won't install it straight from a URL —
+download it first and install the local file. `SHA256SUMS` on the release page
+lets you check the download.)
+
+### Building it yourself
+
+On ARM (aarch64), or if you would rather build from source:
 
 ```sh
 sudo pacman -S --needed base-devel git
+git clone https://github.com/28allday/omafont-app.git ~/omafont-app
+cd ~/omafont-app
+./bin/install
 ```
 
+It builds on your computer in a minute or two and installs the same package.
+
 ### Updating
+
+Install the newer package from the [latest release](https://github.com/28allday/omafont-app/releases/latest)
+the same way; pacman replaces the old one. If you built it yourself:
 
 ```sh
 cd ~/omafont-app
 git pull
 ./bin/install
 ```
+
+Close and reopen OmaFont after updating. `omafont --version` says which
+version you have.
 
 ### Uninstalling
 

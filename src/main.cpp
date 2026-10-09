@@ -12,6 +12,10 @@
 #include <QQuickWindow>
 #include <QSettings>
 
+#ifndef OMAFONT_VERSION
+#define OMAFONT_VERSION "dev"
+#endif
+
 int main(int argc, char *argv[]) {
     // Headless verbs (list, info, install, remove) never open a window, so
     // they must not need a display either.
@@ -26,6 +30,7 @@ int main(int argc, char *argv[]) {
     app.setApplicationName(QStringLiteral("omafont"));
     app.setOrganizationName(QStringLiteral("omafont"));
     app.setApplicationDisplayName(QStringLiteral("OmaFont"));
+    app.setApplicationVersion(QStringLiteral(OMAFONT_VERSION));
     app.setDesktopFileName(QStringLiteral("omafont"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("omafont")));
 
