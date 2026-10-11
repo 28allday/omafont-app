@@ -3,7 +3,7 @@ QT += core gui qml quick quickcontrols2 dbus
 CONFIG += c++17 release
 TARGET = omafont
 # Keep in step with pkgver in pkgbuild/PKGBUILD.
-VERSION = 0.1.0
+VERSION = 0.1.1
 DEFINES += OMAFONT_VERSION=\\\"$$VERSION\\\"
 TEMPLATE = app
 

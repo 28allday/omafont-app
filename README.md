@@ -16,14 +16,14 @@ Download the package from the [latest release](https://github.com/28allday/omafo
 then open a terminal with **Super + Enter** and install it:
 
 ```sh
-sudo pacman -U ~/Downloads/omafont-0.1.0-1-x86_64.pkg.tar.zst
+sudo pacman -U ~/Downloads/omafont-0.1.1-1-x86_64.pkg.tar.zst
 ```
 
 Or download and install it from the terminal in one go:
 
 ```sh
-curl -LO https://github.com/28allday/omafont-app/releases/download/v0.1.0/omafont-0.1.0-1-x86_64.pkg.tar.zst
-sudo pacman -U ./omafont-0.1.0-1-x86_64.pkg.tar.zst
+curl -LO https://github.com/28allday/omafont-app/releases/download/v0.1.1/omafont-0.1.1-1-x86_64.pkg.tar.zst
+sudo pacman -U ./omafont-0.1.1-1-x86_64.pkg.tar.zst
 ```
 
 Type your password when asked, and press Enter to confirm. Then open OmaFont
