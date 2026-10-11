@@ -176,7 +176,10 @@ int Cli::run(Backend &backend, const QStringList &words) {
             if (!meta.manufacturer.isEmpty()) out() << "  manufacturer: " << meta.manufacturer << '\n';
             if (!meta.copyright.isEmpty()) out() << "  copyright: " << meta.copyright << '\n';
             if (!meta.license.isEmpty()) out() << "  licence: " << meta.license.left(120) << (meta.license.size() > 120 ? "…" : "") << '\n';
-            out() << "  embedding: " << meta.embedding() << "   class: " << meta.classification() << '\n';
+            // The window leaves an unknown design class out; so does this.
+            out() << "  embedding: " << meta.embedding();
+            if (meta.classification() != QLatin1String("Unknown")) out() << "   class: " << meta.classification();
+            out() << '\n';
         }
         out() << "  languages: " << f->langs.size() << '\n';
         for (const QString &file : f->files) out() << "  " << file << '\n';

@@ -3,6 +3,7 @@
 
 #include <QDir>
 #include <QFileInfo>
+#include <QSet>
 #include <QSaveFile>
 #include <algorithm>
 
@@ -446,6 +447,23 @@ void Backend::exportCollection(const QString &id) {
 
 // ── Tidy ────────────────────────────────────────────────────────────────────
 
+namespace {
+// The static files of a family that also has a variable font: the files none
+// of whose faces are variable. fontconfig lists a variable font's named
+// instances (Regular, Bold…) as faces of their own that are not variable, so
+// judging face by face would take the variable file for a static one.
+QStringList staticFilesBesideVariable(const FontFamily &f) {
+    QSet<QString> variableFiles;
+    for (const FontFace &face : f.faces) if (face.variable) variableFiles.insert(face.file);
+    QStringList files;
+    if (variableFiles.isEmpty()) return files;
+    for (const FontFace &face : f.faces)
+        if (!face.disabled && face.duplicate && !variableFiles.contains(face.file) && !files.contains(face.file))
+            files.append(face.file);
+    return files;
+}
+} // namespace
+
 // Everything worth cleaning up, with one-click fixes. Built on demand: it
 // walks every family and reads the metadata cache.
 void Backend::buildTidy() {
@@ -476,16 +494,12 @@ void Backend::buildTidy() {
                             tr("%1 styles are installed twice. Keep one format; applications pick one at random otherwise.").arg(twins),
                             files, QStringLiteral("warning")));
         }
-        // Static instances beside a variable font.
-        bool hasVariable = false, hasStatic = false;
-        for (const FontFace &face : f.faces) if (!face.disabled) { if (face.variable) hasVariable = true; else hasStatic = true; }
-        if (hasVariable && hasStatic && f.duplicate && twins == 0) {
-            QStringList files;
-            for (const FontFace &face : f.faces) if (!face.variable && face.duplicate) files.append(face.file);
+        // Static weights beside a variable font that already carries them.
+        const QStringList staticFiles = staticFilesBesideVariable(f);
+        if (!staticFiles.isEmpty() && twins == 0)
             out.append(item(QStringLiteral("variable"), f.name, tr("%1: static weights beside a variable font").arg(f.name),
                             tr("The variable font already carries these weights. Deactivating the static copies leaves one of each."),
-                            files, QStringLiteral("info")));
-        }
+                            staticFiles, QStringLiteral("info")));
         // Files that do not pass validation.
         QStringList broken;
         QStringList why;
@@ -550,8 +564,7 @@ void Backend::tidyKeepFormat(const QString &familyName, const QString &ext) {
 void Backend::tidyKeepVariable(const QString &familyName) {
     const FontFamily *f = family(familyName);
     if (!f || m_busy) return;
-    QStringList files;
-    for (const FontFace &face : f->faces) if (!face.variable && face.duplicate && !face.disabled) files.append(face.file);
+    const QStringList files = staticFilesBesideVariable(*f);
     if (files.isEmpty()) return;
     const QString error = setDisabled(files, true);
     if (!error.isEmpty()) { setStatus(tr("Tidy failed: %1").arg(error), true); return; }
